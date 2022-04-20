@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.StringTokenizer;
 import java.util.Locale;
+import javax.swing.JOptionPane;
       
 /**
  *
@@ -17,6 +18,7 @@ public class Kasir1 extends javax.swing.JFrame {
     int harga_sepatu;
     int jml_harga;
     int bayar,beli,Harga;
+    int input;
   
     /**
      * Creates new form Kasir1
@@ -47,7 +49,6 @@ public class Kasir1 extends javax.swing.JFrame {
         txtKembalian = new javax.swing.JTextField();
         comboPilihan = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         btnBatal = new javax.swing.JButton();
         BtnKeluar = new javax.swing.JButton();
@@ -107,8 +108,7 @@ public class Kasir1 extends javax.swing.JFrame {
             }
         });
 
-        comboPilihan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        comboPilihan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Menu Pilihan", "Yeezy Beluga v2", "Nike Air Jordan 1", "Nike Low Dunk Panda", "Vans Old Skool Primary Checkerboard", "Yeezy Slide", "Air Force 1", "Adidas Stan Smith", "Adidas NMD R1", "Nike Air Max 97", "Nike Air Max 1/97 Sean Weatherspoon", "Nike Fear Of God Light Bone" }));
+        comboPilihan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Option Menu", "Yeezy Beluga v2", "Nike Air Jordan 1", "Nike Low Dunk Panda", "Vans Old Skool Primary Checkerboard", "Yeezy Slide", "Air Force 1", "Adidas Stan Smith", "Adidas NMD R1", "Nike Air Max 97", "Nike Air Max 1/97 Sean Weatherspoon", "Nike Fear Of God Light Bone" }));
         comboPilihan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboPilihanActionPerformed(evt);
@@ -119,21 +119,13 @@ public class Kasir1 extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Nama Barang");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Code Cashier", "C1809823", "C1892390", "C1829392" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setEnabled(false);
 
         btnBatal.setBackground(new java.awt.Color(255, 51, 51));
         btnBatal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnBatal.setText("Batal");
+        btnBatal.setText("Reset");
         btnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBatalActionPerformed(evt);
@@ -142,7 +134,7 @@ public class Kasir1 extends javax.swing.JFrame {
 
         BtnKeluar.setBackground(new java.awt.Color(255, 51, 51));
         BtnKeluar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BtnKeluar.setText("Keluar");
+        BtnKeluar.setText("Exit");
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKeluarActionPerformed(evt);
@@ -187,7 +179,7 @@ public class Kasir1 extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(51, 51, 255));
         jLabel7.setFont(new java.awt.Font("Dubai", 1, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Farfetch Store");
         jLabel7.setBorder(new javax.swing.border.MatteBorder(null));
@@ -207,7 +199,7 @@ public class Kasir1 extends javax.swing.JFrame {
 
         BtnKembalian.setBackground(new java.awt.Color(102, 255, 102));
         BtnKembalian.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BtnKembalian.setText("Bayar");
+        BtnKembalian.setText("Pay");
         BtnKembalian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKembalianActionPerformed(evt);
@@ -220,7 +212,7 @@ public class Kasir1 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BtnKembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addComponent(BtnKembalian, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -255,33 +247,25 @@ public class Kasir1 extends javax.swing.JFrame {
                     .addComponent(comboPilihan, 0, 112, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(198, 198, 198))
+                        .addGap(93, 93, 93)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(83, 83, 83)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(187, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGap(235, 235, 235))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboPilihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
@@ -296,8 +280,13 @@ public class Kasir1 extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                            .addComponent(jLabel3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
@@ -305,13 +294,11 @@ public class Kasir1 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(228, Short.MAX_VALUE))
+                        .addContainerGap(130, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(108, 108, 108)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(245, 245, 245))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -339,6 +326,8 @@ public class Kasir1 extends javax.swing.JFrame {
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null,"Do you want to Reset", "Reset",JOptionPane.YES_NO_OPTION);
+      
         txtBeli.setText("");
         txtJumlah.setText("");
         txtBayar.setText("");
@@ -347,8 +336,10 @@ public class Kasir1 extends javax.swing.JFrame {
         txtHarga.setText("");
     }//GEN-LAST:event_btnBatalActionPerformed
 
+       
     private void btnHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHargaActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,"Count success", "Succes",JOptionPane.ERROR_MESSAGE);
         Harga = Integer.parseInt(txtHarga.getText());
         beli = Integer.parseInt(txtBeli.getText());
 
@@ -356,11 +347,13 @@ public class Kasir1 extends javax.swing.JFrame {
 
         DecimalFormat angka = new DecimalFormat("###,###");
         txtJumlah.setText("" + Integer.toString(bayar));
+        
        
     }//GEN-LAST:event_btnHargaActionPerformed
 
     private void BtnKembalianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKembalianActionPerformed
         // TODO add your handling code here:
+          JOptionPane.showMessageDialog(null,"Pay success", "Succes",JOptionPane.ERROR_MESSAGE);
         int kembali = Integer.parseInt(txtBayar.getText()) ;
         int total = kembali - bayar;
 
@@ -410,12 +403,9 @@ txtKembalian.setText("Rp. "+Integer.toString(total));
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         // TODO add your handling code here:
+          JOptionPane.showConfirmDialog(null,"Do you want to Exit", "Exit",JOptionPane.YES_NO_OPTION);
         System.exit(0);
     }//GEN-LAST:event_BtnKeluarActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,7 +448,6 @@ txtKembalian.setText("Rp. "+Integer.toString(total));
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnHarga;
     private javax.swing.JComboBox<String> comboPilihan;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
